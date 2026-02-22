@@ -8,6 +8,8 @@
   --brand: #7f2857;
   --brand-deep: #5d1940;
   --accent: #d8b38b;
+  --banner-height-desktop: 420px;
+  --banner-height-mobile: 320px;
 }
 
 * {
@@ -80,7 +82,7 @@ a {
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
-  min-height: 360px;
+  height: var(--banner-height-desktop);
   border-radius: 0;
   margin-bottom: 1.2rem;
   overflow: hidden;
@@ -96,21 +98,28 @@ a {
 .heroBannerImage {
   object-fit: cover;
   object-position: center;
-  filter: none;
+  filter: saturate(1.14) contrast(1.05) brightness(1.08);
 }
 
 .heroBannerOverlay {
   position: relative;
   z-index: 1;
-  min-height: 360px;
+  height: var(--banner-height-desktop);
   color: #fff;
-  background: linear-gradient(180deg, rgba(9, 6, 7, 0.03) 0%, rgba(9, 6, 7, 0.2) 85%);
+}
+
+.heroBannerOverlayImage {
+  background: linear-gradient(180deg, rgba(9, 6, 7, 0.01) 0%, rgba(9, 6, 7, 0.12) 88%);
+}
+
+.heroBannerOverlayFallback {
+  background: linear-gradient(180deg, rgba(9, 6, 7, 0.08) 0%, rgba(9, 6, 7, 0.3) 88%);
 }
 
 .heroBannerOverlayInner {
   max-width: 1040px;
   margin: 0 auto;
-  min-height: 360px;
+  height: var(--banner-height-desktop);
   padding: clamp(1rem, 4.5vw, 2.3rem);
   display: flex;
   flex-direction: column;
@@ -123,21 +132,21 @@ a {
   letter-spacing: 0.09em;
   text-transform: uppercase;
   opacity: 0.95;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 2px 7px rgba(0, 0, 0, 0.2);
 }
 
 .heroBannerOverlay h2 {
   margin: 0;
   font-size: clamp(2rem, 6vw, 3.3rem);
   line-height: 1.08;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 2px 7px rgba(0, 0, 0, 0.2);
 }
 
 .heroSubtitle {
   margin: 0.5rem 0 0;
   max-width: 70ch;
   font-size: clamp(1rem, 2.4vw, 1.2rem);
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 2px 7px rgba(0, 0, 0, 0.2);
 }
 
 .heroHint {
@@ -303,6 +312,6 @@ a {
   .heroBanner,
   .heroBannerOverlay,
   .heroBannerOverlayInner {
-    min-height: 300px;
+    height: var(--banner-height-mobile);
   }
 }

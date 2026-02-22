@@ -21,7 +21,7 @@ export function HeroBanner({ title, subtitle, imagePath, imageAlt, slotHint, cta
   const hasImage = hasLocalImage(imagePath);
 
   return (
-    <section className="heroBanner">
+    <section className={`heroBanner ${hasImage ? "heroBannerWithImage" : "heroBannerFallback"}`}>
       {hasImage ? (
         <Image
           src={imagePath as string}
@@ -32,7 +32,7 @@ export function HeroBanner({ title, subtitle, imagePath, imageAlt, slotHint, cta
           className="heroBannerImage"
         />
       ) : null}
-      <div className="heroBannerOverlay">
+      <div className={`heroBannerOverlay ${hasImage ? "heroBannerOverlayImage" : "heroBannerOverlayFallback"}`}>
         <div className="heroBannerOverlayInner">
           <p className="heroKicker">Haute &amp; Hoof</p>
           <h2>{title}</h2>
