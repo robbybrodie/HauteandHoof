@@ -6,6 +6,8 @@ import FashionPicksPage from "@/app/fashion-picks/page";
 import HomePage from "@/app/page";
 import HorsePicksPage from "@/app/horse-picks/page";
 import JourneyPage from "@/app/journey/page";
+import MumsSewingTablePage from "@/app/mums-sewing-table/page";
+import SocialSharePage from "@/app/social-share/page";
 
 describe("smoke route rendering", () => {
   it("renders home page hero", () => {
@@ -37,5 +39,15 @@ describe("smoke route rendering", () => {
     render(await AboutPage({ searchParams: Promise.resolve({}) }));
     expect(screen.getByRole("heading", { name: "About Haute & Hoof" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Send a Message to the Parent Team" })).toBeInTheDocument();
+  });
+
+  it("renders mums sewing table page", () => {
+    render(<MumsSewingTablePage />);
+    expect(screen.getByRole("heading", { name: "Mum's Sewing Table" })).toBeInTheDocument();
+  });
+
+  it("renders social publish desk page", () => {
+    render(<SocialSharePage />);
+    expect(screen.getByRole("heading", { name: "Parent Publish Desk" })).toBeInTheDocument();
   });
 });

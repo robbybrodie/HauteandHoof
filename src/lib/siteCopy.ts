@@ -1,6 +1,7 @@
 export const siteCopy = {
   global: {
     brand: "Haute & Hoof",
+    brandTag: "Young rider spirit, family teamwork, and everyday style.",
     footerTagline: "Haute & Hoof - Family, Fashion, and the Work Behind the Ride.",
     affiliateDisclosure:
       "Disclosure: Some links on this site are affiliate links. If you choose to purchase through these links, Haute & Hoof may earn a small commission at no extra cost to you. We only share products we trust and believe are helpful.",
@@ -22,7 +23,8 @@ export const siteCopy = {
       { title: "Grow as a family", text: "Encouragement, humor, and teamwork matter every day." }
     ],
     closing:
-      "Thanks for being here. We are glad to share this journey with you - the wins, the lessons, and all the little moments in between."
+      "Thanks for being here. We are glad to share this journey with you - the wins, the lessons, and all the little moments in between.",
+    photoSlot: "home-hero.jpg"
   },
   journey: {
     title: "Violet's Journey",
@@ -48,7 +50,8 @@ export const siteCopy = {
         body:
           "Behind every young rider is a team. Our family supports each step with structure, encouragement, and yes, the occasional dad joke to keep things light."
       }
-    ]
+    ],
+    photoSlot: "journey-banner.jpg"
   },
   horsePicks: {
     title: "Horse Picks We Trust",
@@ -77,7 +80,33 @@ export const siteCopy = {
     intro:
       "Every great journey needs encouragement, perspective, and a little laughter. Dad Corner is where training partner energy meets family humor.",
     joke:
-      "Why did Cloudy bring a pencil to practice? Because he wanted to draw a better line through the pattern."
+      "Why did Cloudy bring a pencil to practice? Because he wanted to draw a better line through the pattern.",
+    photoSlot: "dad-corner-banner.jpg"
+  },
+  mumsSewingTable: {
+    title: "Mum's Sewing Table",
+    intro:
+      "Mum's Sewing Table is where practical creativity meets the Haute & Hoof story. We share beginner-friendly projects, thoughtful repairs, and little design moments that support life around the barn.",
+    highlights: [
+      "Beginner-friendly projects with clear steps",
+      "Small fixes that keep favorite pieces in use",
+      "Comfort-first stitching ideas for active riding days",
+      "A creative space where Violet learns by doing"
+    ],
+    makingNow: ["Barn-tough tote bag", "Riding-ready hair scrunchies", "Cloudy-inspired patch set"],
+    supportNote:
+      "This table is part of the family team effort: practical help, creative joy, and steady encouragement."
+  },
+  socialShare: {
+    title: "Parent Publish Desk",
+    intro:
+      "Prepare your post copy here, then open Instagram or TikTok for final parent-managed publishing. This keeps posting safe, deliberate, and in your control.",
+    fields: {
+      caption: "Caption",
+      hashtags: "Hashtags",
+      mediaRef: "Media Filename",
+      linkNote: "Optional Link/Note"
+    }
   },
   about: {
     title: "About Haute & Hoof",

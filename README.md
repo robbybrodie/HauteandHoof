@@ -9,6 +9,11 @@ npm install
 npm run dev
 ```
 
+## Banner images
+
+Place your selected banner photos in `public/images` using the filenames documented in `public/images/README.md`.
+If a banner image is missing, the site uses a branded fallback gradient automatically.
+
 ## Contact form email setup
 
 The parent contact form on `/about` sends email using Resend.
@@ -21,6 +26,15 @@ The parent contact form on `/about` sends email using Resend.
    - `CONTACT_RATE_LIMIT_WINDOW_MS` (optional, default `600000`)
    - `CONTACT_RATE_LIMIT_MAX` (optional, default `5`)
 3. In Vercel, add the same env vars in project settings
+
+## Social integration workflow
+
+Use `/social-share` as the parent-managed publish desk:
+- Draft caption, hashtags, and link note
+- Copy caption text
+- Open Instagram/TikTok upload surfaces for final manual posting
+
+This avoids fragile direct-post API dependencies and keeps final publishing parent-controlled.
 
 ## Quality checks
 

@@ -8,6 +8,8 @@ const links = [
   { href: "/horse-picks", label: "Horse Picks" },
   { href: "/fashion-picks", label: "Fashion Picks" },
   { href: "/dad-corner", label: "Dad Corner" },
+  { href: "/mums-sewing-table", label: "Mum's Sewing Table" },
+  { href: "/social-share", label: "Parent Publish Desk" },
   { href: "/about", label: "About" }
 ];
 
@@ -16,7 +18,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
     <div className="container">
       <header className="siteHeader">
         <h1 className="brandTitle">{siteCopy.global.brand}</h1>
-        <p className="brandTag">Young rider spirit, family teamwork, and everyday style.</p>
+        <p className="brandTag">{siteCopy.global.brandTag}</p>
         <nav className="nav" aria-label="Main Navigation">
           {links.map((link) => (
             <Link key={link.href} href={link.href}>
