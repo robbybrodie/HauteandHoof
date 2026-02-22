@@ -33,13 +33,15 @@ export function HeroBanner({ title, subtitle, imagePath, imageAlt, slotHint, cta
         />
       ) : null}
       <div className="heroBannerOverlay">
-        <p className="heroKicker">Haute &amp; Hoof</p>
-        <h2>{title}</h2>
-        <p className="heroSubtitle">{subtitle}</p>
-        {cta ? <div className="actions">{cta}</div> : null}
-        {!hasImage && slotHint ? (
-          <p className="small heroHint">Photo slot: add `{slotHint}` to `/public/images` for this banner.</p>
-        ) : null}
+        <div className="heroBannerOverlayInner">
+          <p className="heroKicker">Haute &amp; Hoof</p>
+          <h2>{title}</h2>
+          <p className="heroSubtitle">{subtitle}</p>
+          {cta ? <div className="actions">{cta}</div> : null}
+          {!hasImage && slotHint ? (
+            <p className="small heroHint">Photo slot: add `{slotHint}` to `/public/images` for this banner.</p>
+          ) : null}
+        </div>
       </div>
     </section>
   );
