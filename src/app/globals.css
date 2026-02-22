@@ -127,6 +127,21 @@ a {
   justify-content: flex-end;
 }
 
+.heroBannerOverlaySplit {
+  justify-content: space-between;
+}
+
+.heroTop {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.heroBottom {
+  display: flex;
+  flex-direction: column;
+}
+
 .heroKicker {
   margin: 0 0 0.2rem;
   font-size: 0.9rem;

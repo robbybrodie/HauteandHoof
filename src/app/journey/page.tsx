@@ -11,6 +11,8 @@ export default function JourneyPage() {
         imagePath={`/images/${siteCopy.journey.photoSlot}`}
         imageAlt="Violet riding Cloudy during a lesson"
         slotHint={siteCopy.journey.photoSlot}
+        showKicker={false}
+        splitTitleSubtitle
       />
       {siteCopy.journey.sections.map((section) => (
         <section key={section.heading} className="card">

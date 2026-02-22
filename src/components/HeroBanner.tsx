@@ -10,6 +10,8 @@ type HeroBannerProps = {
   imageAlt?: string;
   slotHint?: string;
   cta?: ReactNode;
+  showKicker?: boolean;
+  splitTitleSubtitle?: boolean;
 };
 
 function hasLocalImage(imagePath?: string) {
@@ -17,7 +19,16 @@ function hasLocalImage(imagePath?: string) {
   return existsSync(join(process.cwd(), "public", imagePath));
 }
 
-export function HeroBanner({ title, subtitle, imagePath, imageAlt, slotHint, cta }: HeroBannerProps) {
+export function HeroBanner({
+  title,
+  subtitle,
+  imagePath,
+  imageAlt,
+  slotHint,
+  cta,
+  showKicker = true,
+  splitTitleSubtitle = false
+}: HeroBannerProps) {
   const hasImage = hasLocalImage(imagePath);
 
   return (
@@ -34,11 +45,15 @@ export function HeroBanner({ title, subtitle, imagePath, imageAlt, slotHint, cta
         />
       ) : null}
       <div className={`heroBannerOverlay ${hasImage ? "heroBannerOverlayImage" : "heroBannerOverlayFallback"}`}>
-        <div className="heroBannerOverlayInner">
-          <p className="heroKicker">Haute &amp; Hoof</p>
-          <h2>{title}</h2>
-          <p className="heroSubtitle">{subtitle}</p>
-          {cta ? <div className="actions">{cta}</div> : null}
+        <div className={`heroBannerOverlayInner ${splitTitleSubtitle ? "heroBannerOverlaySplit" : ""}`}>
+          <div className="heroTop">
+            {showKicker ? <p className="heroKicker">Haute &amp; Hoof</p> : null}
+            <h2>{title}</h2>
+          </div>
+          <div className="heroBottom">
+            <p className="heroSubtitle">{subtitle}</p>
+            {cta ? <div className="actions">{cta}</div> : null}
+          </div>
           {!hasImage && slotHint ? (
             <p className="small heroHint">Photo slot: add `{slotHint}` to `/public/images` for this banner.</p>
           ) : null}
