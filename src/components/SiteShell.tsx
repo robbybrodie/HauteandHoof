@@ -6,6 +6,7 @@ import { siteCopy } from "@/lib/siteCopy";
 
 const NAV = [
   { href: "/journey", label: "Journey" },
+  { href: "/our-world", label: "Our World" },
   { href: "/horse-picks", label: "Horse Picks" },
   { href: "/fashion-picks", label: "Fashion Picks" },
   { href: "/dad-corner", label: "Dad Corner" },

@@ -3,6 +3,7 @@ import { render, screen } from "@testing-library/react";
 import { redirect } from "next/navigation";
 
 import JourneyPage from "@/app/journey/page";
+import OurWorldPage from "@/app/our-world/page";
 import HorsePicksPage from "@/app/horse-picks/page";
 import FashionPicksPage from "@/app/fashion-picks/page";
 import DadCornerPage from "@/app/dad-corner/page";
@@ -20,6 +21,13 @@ describe("smoke: route rendering", () => {
     render(<JourneyPage />);
     expect(
       screen.getByRole("heading", { name: /Violet\u2019s Journey/ })
+    ).toBeInTheDocument();
+  });
+
+  it("renders our world page", () => {
+    render(<OurWorldPage />);
+    expect(
+      screen.getByRole("heading", { name: "Where Style Meets the Saddle" })
     ).toBeInTheDocument();
   });
 
