@@ -44,7 +44,11 @@ export function HeroBanner({
           className="heroBannerImage"
         />
       ) : null}
-      <div className={`heroBannerOverlay ${hasImage ? "heroBannerOverlayImage" : "heroBannerOverlayFallback"}`}>
+      <div
+        className={`heroBannerOverlay ${hasImage ? "heroBannerOverlayImage" : "heroBannerOverlayFallback"} ${
+          splitTitleSubtitle ? "heroBannerOverlaySplitZones" : ""
+        }`}
+      >
         <div className={`heroBannerOverlayInner ${splitTitleSubtitle ? "heroBannerOverlaySplit" : ""}`}>
           <div className="heroTop">
             {showKicker ? <p className="heroKicker">Haute &amp; Hoof</p> : null}
