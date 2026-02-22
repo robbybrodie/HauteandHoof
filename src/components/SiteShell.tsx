@@ -1,4 +1,5 @@
 import { Children, ReactNode } from "react";
+import { CursorMediaTrail } from "@/components/CursorMediaTrail";
 import { MotionReveal } from "@/components/MotionReveal";
 import { PrimaryNav } from "@/components/PrimaryNav";
 import { siteCopy } from "@/lib/siteCopy";
@@ -16,21 +17,18 @@ const links = [
 
 export function SiteShell({ children }: { children: ReactNode }) {
   const childNodes = Children.toArray(children);
-  const firstBlock = childNodes[0] ?? null;
-  const remainingBlocks = childNodes.slice(1);
 
   return (
     <div className="container">
-      <header className="siteHeader">
-        <h1 className="brandTitle">{siteCopy.global.brand}</h1>
-        <p className="brandTag">{siteCopy.global.brandTag}</p>
+      <header className="siteHeader siteHeaderTop">
+        <div className="siteTopBar">
+          <h1 className="brandTitle">{siteCopy.global.brand}</h1>
+          <PrimaryNav links={links} />
+        </div>
       </header>
       <main className="pageMain">
-        {firstBlock}
-        <MotionReveal delayMs={30}>
-          <PrimaryNav links={links} />
-        </MotionReveal>
-        {remainingBlocks.map((block, index) => (
+        <CursorMediaTrail />
+        {childNodes.map((block, index) => (
           <MotionReveal key={index} delayMs={Math.min(220, 60 + index * 30)}>
             {block}
           </MotionReveal>

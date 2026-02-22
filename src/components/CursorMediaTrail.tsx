@@ -10,10 +10,8 @@ type MediaStub = {
 };
 
 type Ghost = {
-  id: number;
   x: number;
   y: number;
-  stub: MediaStub;
 };
 
 const STUBS: MediaStub[] = [
@@ -25,10 +23,14 @@ const STUBS: MediaStub[] = [
 ];
 
 export function CursorMediaTrail() {
-  const [ghosts, setGhosts] = useState<Ghost[]>([]);
-  const nextStub = useRef(0);
-  const ghostId = useRef(0);
-  const lastSpawn = useRef(0);
+  const [activeStub, setActiveStub] = useState(STUBS[0]);
+  const [visible, setVisible] = useState(false);
+  const [position, setPosition] = useState<Ghost>({ x: 0, y: 0 });
+  const nextStub = useRef(1);
+  const current = useRef({ x: 0, y: 0 });
+  const target = useRef({ x: 0, y: 0 });
+  const rafId = useRef<number | null>(null);
+  const lastSwap = useRef(0);
   const enabled = useMemo(() => {
     if (typeof window === "undefined") return false;
     if (window.matchMedia && window.matchMedia("(pointer: coarse)").matches) return false;
@@ -38,49 +40,57 @@ export function CursorMediaTrail() {
   useEffect(() => {
     if (!enabled) return;
 
-    const onMove = (event: PointerEvent) => {
-      const now = performance.now();
-      if (now - lastSpawn.current < 90) return;
-      lastSpawn.current = now;
-
-      const stub = STUBS[nextStub.current];
-      nextStub.current = (nextStub.current + 1) % STUBS.length;
-
-      const newGhost: Ghost = {
-        id: ghostId.current++,
-        x: event.clientX,
-        y: event.clientY,
-        stub
-      };
-
-      setGhosts((current) => [...current.slice(-7), newGhost]);
-      window.setTimeout(() => {
-        setGhosts((current) => current.filter((ghost) => ghost.id !== newGhost.id));
-      }, 640);
+    const animate = () => {
+      current.current.x += (target.current.x - current.current.x) * 0.2;
+      current.current.y += (target.current.y - current.current.y) * 0.2;
+      setPosition({ x: current.current.x, y: current.current.y });
+      rafId.current = window.requestAnimationFrame(animate);
     };
 
+    const onMove = (event: PointerEvent) => {
+      target.current = { x: event.clientX + 24, y: event.clientY + 18 };
+      if (!visible) setVisible(true);
+
+      const now = performance.now();
+      if (now - lastSwap.current > 280) {
+        setActiveStub(STUBS[nextStub.current]);
+        nextStub.current = (nextStub.current + 1) % STUBS.length;
+        lastSwap.current = now;
+      }
+    };
+
+    const onLeave = () => {
+      setVisible(false);
+    };
+
+    rafId.current = window.requestAnimationFrame(animate);
     window.addEventListener("pointermove", onMove, { passive: true });
-    return () => window.removeEventListener("pointermove", onMove);
-  }, [enabled]);
+    window.addEventListener("pointerleave", onLeave);
+
+    return () => {
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerleave", onLeave);
+      if (rafId.current) window.cancelAnimationFrame(rafId.current);
+    };
+  }, [enabled, visible]);
 
   if (!enabled) return null;
 
   return (
     <div className="cursorTrailLayer" aria-hidden="true">
-      {ghosts.map((ghost) => (
-        <div
-          key={ghost.id}
-          className={`cursorGhost ${ghost.stub.type === "video" ? "cursorGhostVideo" : "cursorGhostPhoto"}`}
-          style={{
-            left: `${ghost.x}px`,
-            top: `${ghost.y}px`,
-            backgroundImage: ghost.stub.image ? `url(${ghost.stub.image})` : undefined
-          }}
-        >
-          <span>{ghost.stub.type === "video" ? "Video" : "Photo"}</span>
-          <small>{ghost.stub.label}</small>
-        </div>
-      ))}
+      <div
+        className={`cursorPreview ${visible ? "cursorPreviewVisible" : ""} ${
+          activeStub.type === "video" ? "cursorPreviewVideo" : "cursorPreviewPhoto"
+        }`}
+        style={{
+          left: `${position.x}px`,
+          top: `${position.y}px`,
+          backgroundImage: activeStub.image ? `url(${activeStub.image})` : undefined
+        }}
+      >
+        <span>{activeStub.type === "video" ? "Video" : "Photo"}</span>
+        <small>{activeStub.label}</small>
+      </div>
     </div>
   );
 }

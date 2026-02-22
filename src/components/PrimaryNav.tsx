@@ -25,8 +25,8 @@ export function PrimaryNav({ links }: { links: NavLink[] }) {
         })}
       </div>
       <div className="navMobile">
-        <label htmlFor="page-nav" className="small">
-          Jump to page
+        <label htmlFor="page-nav" className="small navMobileLabel">
+          Menu
         </label>
         <select
           id="page-nav"
