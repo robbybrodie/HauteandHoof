@@ -10,6 +10,7 @@
   --accent: #d8b38b;
   --banner-height-desktop: 420px;
   --banner-height-mobile: 320px;
+  --content-gutter: max(1rem, calc((100vw - 1040px) / 2 + 1rem));
 }
 
 * {
@@ -30,13 +31,12 @@ a {
 }
 
 .container {
-  max-width: 1040px;
-  margin: 0 auto;
-  padding: 1.25rem;
+  width: 100%;
 }
 
 .siteHeader {
   margin: 0.5rem 0 1.5rem;
+  padding: 0 var(--content-gutter);
 }
 
 .brandTitle {
@@ -55,7 +55,7 @@ a {
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem;
-  padding: 1rem 0 0.25rem;
+  padding: 1rem var(--content-gutter) 0.25rem;
 }
 
 .nav a {
@@ -98,7 +98,7 @@ a {
 .heroBannerImage {
   object-fit: cover;
   object-position: center;
-  filter: saturate(1.14) contrast(1.05) brightness(1.08);
+  filter: saturate(1.28) contrast(1.1) brightness(1.14);
 }
 
 .heroBannerOverlay {
@@ -109,7 +109,7 @@ a {
 }
 
 .heroBannerOverlayImage {
-  background: linear-gradient(180deg, rgba(9, 6, 7, 0.01) 0%, rgba(9, 6, 7, 0.12) 88%);
+  background: linear-gradient(180deg, rgba(9, 6, 7, 0.0) 0%, rgba(9, 6, 7, 0.08) 90%);
 }
 
 .heroBannerOverlayFallback {
@@ -188,16 +188,20 @@ a {
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem;
+  display: block;
 }
 
 .card {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
   background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 1rem 1.1rem;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  border-left: 0;
+  border-right: 0;
+  border-radius: 0;
+  padding: 1rem var(--content-gutter);
   margin-bottom: 1rem;
 }
 
@@ -206,6 +210,7 @@ a {
   overflow: hidden;
   min-height: 220px;
   padding: 0;
+  border-radius: 0;
 }
 
 .bannerCardBody {
@@ -246,7 +251,7 @@ a {
 .siteFooter {
   border-top: 1px solid var(--line);
   margin-top: 1.4rem;
-  padding-top: 1rem;
+  padding: 1rem var(--content-gutter) 0;
 }
 
 .sectionActions {

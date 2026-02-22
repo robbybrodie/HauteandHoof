@@ -28,7 +28,8 @@ export function HeroBanner({ title, subtitle, imagePath, imageAlt, slotHint, cta
           alt={imageAlt ?? title}
           fill
           priority
-          sizes="(max-width: 900px) 100vw, 1040px"
+          quality={100}
+          sizes="100vw"
           className="heroBannerImage"
         />
       ) : null}
