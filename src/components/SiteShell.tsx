@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { Children, ReactNode } from "react";
+import { PrimaryNav } from "@/components/PrimaryNav";
 import { siteCopy } from "@/lib/siteCopy";
 
 const links = [
@@ -26,13 +26,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
       </header>
       <main>
         {firstBlock}
-        <nav className="nav" aria-label="Main Navigation">
-          {links.map((link) => (
-            <Link key={link.href} href={link.href}>
-              {link.label}
-            </Link>
-          ))}
-        </nav>
+        <PrimaryNav links={links} />
         {remainingBlocks}
       </main>
       <footer className="small siteFooter">

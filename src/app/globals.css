@@ -1,13 +1,14 @@
 :root {
   color-scheme: dark;
-  --bg: #0f0d12;
-  --text: #f6f3f7;
-  --muted: #c7bfd0;
-  --card: #1a1620;
-  --line: #31293c;
-  --brand: #7f2857;
-  --brand-deep: #f3d7e8;
-  --accent: #d8b38b;
+  --bg: #12091d;
+  --text: #fbf7ff;
+  --muted: #d5c7e5;
+  --card: #1e1230;
+  --line: #3d2a57;
+  --brand: #ff4da1;
+  --brand-deep: #ffd2ea;
+  --accent: #71dbff;
+  --accent-soft: #2a1f3b;
   --banner-height-desktop: 420px;
   --banner-height-mobile: 320px;
   --content-gutter: max(1rem, calc((100vw - 1040px) / 2 + 1rem));
@@ -19,9 +20,12 @@
 
 body {
   margin: 0;
-  font-family: "Avenir Next", "Segoe UI", Arial, sans-serif;
+  font-family: var(--font-body), "Segoe UI", Arial, sans-serif;
   color: var(--text);
-  background: radial-gradient(circle at top, #231828 0%, var(--bg) 42%);
+  background:
+    radial-gradient(circle at 20% -20%, #3f1b59 0%, transparent 35%),
+    radial-gradient(circle at 80% -10%, #203057 0%, transparent 40%),
+    var(--bg);
   line-height: 1.6;
   overflow-x: clip;
 }
@@ -42,31 +46,71 @@ a {
 .brandTitle {
   margin: 0;
   font-size: clamp(1.8rem, 4vw, 2.6rem);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
+  font-family: var(--font-heading), "Segoe UI", Arial, sans-serif;
   color: var(--brand-deep);
 }
 
 .brandTag {
   margin: 0.25rem 0 0;
   color: var(--muted);
+  font-weight: 700;
 }
 
 .nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
+  display: block;
   padding: 1rem var(--content-gutter) 0.25rem;
 }
 
-.nav a {
+.navDesktop {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.1rem;
+  border-top: 2px solid var(--line);
+  border-bottom: 2px solid var(--line);
+  padding: 0.7rem 0;
+}
+
+.navDesktop a {
   text-decoration: none;
-  font-weight: 700;
-  font-size: 0.95rem;
-  border: 1px solid #463754;
-  border-radius: 999px;
-  padding: 0.32rem 0.72rem;
-  background: #241f2b;
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+  color: #f7ebff;
+  position: relative;
+  padding-bottom: 0.15rem;
+}
+
+.navDesktop a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.22rem;
+  width: 100%;
+  height: 2px;
+  background: transparent;
+  transition: background 140ms ease;
+}
+
+.navDesktop a:hover::after,
+.navDesktop a.navActive::after {
+  background: var(--accent);
+}
+
+.navMobile {
+  display: none;
+}
+
+.navSelect {
+  width: 100%;
+  margin-top: 0.35rem;
+  border-radius: 8px;
+  border: 2px solid #584175;
+  background: var(--accent-soft);
   color: var(--text);
+  font: inherit;
+  font-weight: 700;
+  padding: 0.65rem 0.75rem;
 }
 
 .hero {
@@ -87,8 +131,8 @@ a {
   border-radius: 0;
   margin-bottom: 1.2rem;
   overflow: hidden;
-  border-top: 1px solid #4a3b57;
-  border-bottom: 1px solid #4a3b57;
+  border-top: 2px solid #5d4182;
+  border-bottom: 2px solid #5d4182;
   border-left: 0;
   border-right: 0;
   background:
@@ -99,7 +143,7 @@ a {
 .heroBannerImage {
   object-fit: cover;
   object-position: center;
-  filter: saturate(1.28) contrast(1.1) brightness(1.14);
+  filter: saturate(1.35) contrast(1.14) brightness(1.16);
 }
 
 .heroBannerOverlay {
@@ -110,14 +154,14 @@ a {
 }
 
 .heroBannerOverlayImage {
-  background: linear-gradient(180deg, rgba(9, 6, 7, 0.0) 0%, rgba(9, 6, 7, 0.08) 90%);
+  background: linear-gradient(180deg, rgba(9, 6, 7, 0.0) 0%, rgba(9, 6, 7, 0.06) 90%);
 }
 
 .heroBannerOverlayImage.heroBannerOverlaySplit {
   /* Keep the middle of the photo clear while reinforcing text zones */
   background:
-    linear-gradient(180deg, rgba(9, 6, 7, 0.36) 0%, rgba(9, 6, 7, 0.12) 26%, rgba(9, 6, 7, 0) 44%),
-    linear-gradient(0deg, rgba(9, 6, 7, 0.44) 0%, rgba(9, 6, 7, 0.14) 28%, rgba(9, 6, 7, 0) 48%);
+    linear-gradient(180deg, rgba(9, 6, 7, 0.34) 0%, rgba(9, 6, 7, 0.1) 25%, rgba(9, 6, 7, 0) 42%),
+    linear-gradient(0deg, rgba(9, 6, 7, 0.42) 0%, rgba(9, 6, 7, 0.12) 27%, rgba(9, 6, 7, 0) 47%);
 }
 
 .heroBannerOverlayFallback {
@@ -163,6 +207,7 @@ a {
   font-size: clamp(2rem, 6vw, 3.3rem);
   line-height: 1.08;
   text-shadow: 0 3px 12px rgba(0, 0, 0, 0.45);
+  font-family: var(--font-heading), "Segoe UI", Arial, sans-serif;
 }
 
 .heroSubtitle {
@@ -205,9 +250,9 @@ a {
 }
 
 .buttonSecondary {
-  background: #2b2433;
+  background: #2f1f40;
   color: #f8f4fb;
-  border-color: #514162;
+  border-color: #654489;
 }
 
 .grid {
@@ -258,11 +303,13 @@ a {
 
 .sectionTitle {
   margin: 0.1rem 0 0.6rem;
-  color: #f7d7eb;
+  color: #ffd6ef;
+  font-family: var(--font-heading), "Segoe UI", Arial, sans-serif;
+  letter-spacing: 0.01em;
 }
 
 .callout {
-  background: #201a26;
+  background: #271739;
   border-left: 4px solid var(--accent);
 }
 
@@ -305,10 +352,10 @@ a {
 .textarea {
   width: 100%;
   border-radius: 10px;
-  border: 1px solid #52415f;
+  border: 1px solid #654a82;
   padding: 0.7rem 0.8rem;
   font: inherit;
-  background: #1f1a25;
+  background: #241631;
   color: var(--text);
 }
 
@@ -338,6 +385,17 @@ a {
 }
 
 @media (max-width: 740px) {
+  .navDesktop {
+    display: none;
+  }
+
+  .navMobile {
+    display: block;
+    border-top: 2px solid var(--line);
+    border-bottom: 2px solid var(--line);
+    padding: 0.55rem 0 0.75rem;
+  }
+
   .heroBanner,
   .heroBannerOverlay,
   .heroBannerOverlayInner {

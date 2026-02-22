@@ -5,3 +5,10 @@ import { vi } from "vitest";
 vi.mock("next/link", () => ({
   default: ({ children, href }: { children: ReactNode; href: string }) => createElement("a", { href }, children)
 }));
+
+vi.mock("next/navigation", () => ({
+  usePathname: () => "/",
+  useRouter: () => ({
+    push: vi.fn()
+  })
+}));
