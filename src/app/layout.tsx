@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
-import { Baloo_2, Nunito } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
-const headingFont = Baloo_2({
+const headingFont = Playfair_Display({
   subsets: ["latin"],
-  weight: ["600", "700", "800"],
+  weight: ["500", "600", "700"],
   variable: "--font-heading"
 });
 
-const bodyFont = Nunito({
+const bodyFont = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "700", "800"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-body"
 });
 

@@ -1,5 +1,4 @@
 import { Children, ReactNode } from "react";
-import { CursorMediaTrail } from "@/components/CursorMediaTrail";
 import { MotionReveal } from "@/components/MotionReveal";
 import { PrimaryNav } from "@/components/PrimaryNav";
 import { siteCopy } from "@/lib/siteCopy";
@@ -26,8 +25,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
         <h1 className="brandTitle">{siteCopy.global.brand}</h1>
         <p className="brandTag">{siteCopy.global.brandTag}</p>
       </header>
-      <main>
-        <CursorMediaTrail />
+      <main className="pageMain">
         {firstBlock}
         <MotionReveal delayMs={30}>
           <PrimaryNav links={links} />
