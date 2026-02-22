@@ -5,7 +5,6 @@ import { PrimaryNav } from "@/components/PrimaryNav";
 import { siteCopy } from "@/lib/siteCopy";
 
 const NAV = [
-  { href: "/", label: "Home" },
   { href: "/journey", label: "Journey" },
   { href: "/horse-picks", label: "Horse Picks" },
   { href: "/fashion-picks", label: "Fashion Picks" },

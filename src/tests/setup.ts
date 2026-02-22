@@ -17,8 +17,9 @@ vi.mock("next/link", () => ({
 }));
 
 vi.mock("next/navigation", () => ({
-  usePathname: () => "/",
-  useRouter: () => ({ push: vi.fn() })
+  usePathname: () => "/journey",
+  useRouter: () => ({ push: vi.fn() }),
+  redirect: vi.fn()
 }));
 
 vi.mock("next/image", () => ({
