@@ -12,6 +12,10 @@
   --banner-height-desktop: 420px;
   --banner-height-mobile: 320px;
   --content-gutter: max(1rem, calc((100vw - 1040px) / 2 + 1rem));
+  --ease-out-soft: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --motion-fast: 180ms;
+  --motion-med: 320ms;
+  --motion-slow: 620ms;
 }
 
 * {
@@ -28,6 +32,7 @@ body {
     var(--bg);
   line-height: 1.6;
   overflow-x: clip;
+  scroll-behavior: smooth;
 }
 
 a {
@@ -79,6 +84,9 @@ a {
   color: #f7ebff;
   position: relative;
   padding-bottom: 0.15rem;
+  transition:
+    color var(--motion-fast) var(--ease-out-soft),
+    transform var(--motion-fast) var(--ease-out-soft);
 }
 
 .navDesktop a::after {
@@ -97,6 +105,11 @@ a {
   background: var(--accent);
 }
 
+.navDesktop a:hover {
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
 .navMobile {
   display: none;
 }
@@ -111,6 +124,9 @@ a {
   font: inherit;
   font-weight: 700;
   padding: 0.65rem 0.75rem;
+  transition:
+    border-color var(--motion-fast) var(--ease-out-soft),
+    background-color var(--motion-fast) var(--ease-out-soft);
 }
 
 .hero {
@@ -138,12 +154,18 @@ a {
   background:
     linear-gradient(120deg, rgba(93, 25, 64, 0.88) 0%, rgba(127, 40, 87, 0.76) 38%, rgba(216, 179, 139, 0.7) 100%);
   box-shadow: 0 10px 28px rgba(16, 24, 40, 0.1);
+  transform: translateZ(0);
 }
 
 .heroBannerImage {
   object-fit: cover;
   object-position: center;
   filter: saturate(1.35) contrast(1.14) brightness(1.16);
+  transition: transform var(--motion-slow) var(--ease-out-soft);
+}
+
+.heroBanner:hover .heroBannerImage {
+  transform: scale(1.035);
 }
 
 .heroBannerOverlay {
@@ -151,6 +173,7 @@ a {
   z-index: 1;
   height: var(--banner-height-desktop);
   color: #fff;
+  transition: background var(--motion-med) var(--ease-out-soft);
 }
 
 .heroBannerOverlayImage {
@@ -242,17 +265,27 @@ a {
   font-weight: 700;
   padding: 0.55rem 0.95rem;
   text-decoration: none;
+  transition:
+    transform var(--motion-fast) var(--ease-out-soft),
+    box-shadow var(--motion-fast) var(--ease-out-soft),
+    border-color var(--motion-fast) var(--ease-out-soft),
+    background-color var(--motion-fast) var(--ease-out-soft);
 }
 
 .buttonPrimary {
   background: var(--brand);
   color: #fff;
+  box-shadow: 0 8px 20px rgba(255, 77, 161, 0.24);
 }
 
 .buttonSecondary {
   background: #2f1f40;
   color: #f8f4fb;
   border-color: #654489;
+}
+
+.button:hover {
+  transform: translateY(-2px) scale(1.01);
 }
 
 .grid {
@@ -271,6 +304,10 @@ a {
   border-radius: 0;
   padding: 1rem var(--content-gutter);
   margin-bottom: 1rem;
+  transition:
+    background-color var(--motion-med) var(--ease-out-soft),
+    transform var(--motion-med) var(--ease-out-soft),
+    border-color var(--motion-fast) var(--ease-out-soft);
 }
 
 .bannerCard {
@@ -313,6 +350,10 @@ a {
   border-left: 4px solid var(--accent);
 }
 
+.card:hover {
+  background: #25153a;
+}
+
 .small {
   color: var(--muted);
   font-size: 0.9rem;
@@ -322,6 +363,90 @@ a {
   border-top: 1px solid #40334c;
   margin-top: 1.4rem;
   padding: 1rem var(--content-gutter) 0;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  filter: blur(6px);
+  transition:
+    opacity var(--motion-med) var(--ease-out-soft),
+    transform var(--motion-med) var(--ease-out-soft),
+    filter var(--motion-med) var(--ease-out-soft);
+}
+
+.revealVisible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+.cursorTrailLayer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 55;
+}
+
+.cursorGhost {
+  position: fixed;
+  width: 160px;
+  height: 104px;
+  border-radius: 12px;
+  overflow: hidden;
+  transform: translate(-50%, -50%) scale(0.82);
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  background-position: center;
+  background-size: cover;
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.35),
+    inset 0 -28px 42px rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0.4rem 0.5rem;
+  animation: cursorPop 640ms var(--ease-out-soft) forwards;
+}
+
+.cursorGhostVideo {
+  background:
+    radial-gradient(circle at 20% 10%, rgba(113, 219, 255, 0.35) 0%, rgba(113, 219, 255, 0) 46%),
+    linear-gradient(120deg, rgba(255, 77, 161, 0.55), rgba(61, 34, 92, 0.9));
+}
+
+.cursorGhostPhoto {
+  background-color: #2d1845;
+}
+
+.cursorGhost span {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.cursorGhost small {
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+@keyframes cursorPop {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.82);
+  }
+  15% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  72% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.05);
+  }
 }
 
 .sectionActions {
@@ -400,5 +525,17 @@ a {
   .heroBannerOverlay,
   .heroBannerOverlayInner {
     height: var(--banner-height-mobile);
+  }
+
+  .cursorTrailLayer {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
   }
 }

@@ -1,4 +1,6 @@
 import { Children, ReactNode } from "react";
+import { CursorMediaTrail } from "@/components/CursorMediaTrail";
+import { MotionReveal } from "@/components/MotionReveal";
 import { PrimaryNav } from "@/components/PrimaryNav";
 import { siteCopy } from "@/lib/siteCopy";
 
@@ -25,9 +27,16 @@ export function SiteShell({ children }: { children: ReactNode }) {
         <p className="brandTag">{siteCopy.global.brandTag}</p>
       </header>
       <main>
+        <CursorMediaTrail />
         {firstBlock}
-        <PrimaryNav links={links} />
-        {remainingBlocks}
+        <MotionReveal delayMs={30}>
+          <PrimaryNav links={links} />
+        </MotionReveal>
+        {remainingBlocks.map((block, index) => (
+          <MotionReveal key={index} delayMs={Math.min(220, 60 + index * 30)}>
+            {block}
+          </MotionReveal>
+        ))}
       </main>
       <footer className="small siteFooter">
         <p>{siteCopy.global.footerTagline}</p>
