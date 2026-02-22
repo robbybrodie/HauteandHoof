@@ -6,7 +6,7 @@ export type SocialDraft = {
 
 export const EMPTY_DRAFT: SocialDraft = {
   caption: "",
-  hashtags: "#HauteAndHoof #VioletAndCloudy",
+  hashtags: "#BarnToBlazer #VioletAndCloudy",
   platform: "TikTok"
 };
 
@@ -14,7 +14,7 @@ export function formatDraftForPost(draft: SocialDraft): string {
   return [draft.caption.trim(), draft.hashtags.trim()].filter(Boolean).join("\n\n");
 }
 
-const STORAGE_KEY = "hh_social_draft";
+const STORAGE_KEY = "btb_social_draft";
 
 export function readStoredDraft(): SocialDraft {
   if (typeof window === "undefined" || !window.localStorage) return EMPTY_DRAFT;

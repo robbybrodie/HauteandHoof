@@ -66,7 +66,7 @@ describe("smoke: route rendering", () => {
     });
     render(result);
     expect(
-      screen.getByRole("heading", { name: /About Haute/ })
+      screen.getByRole("heading", { name: /About Barn to Blazer/ })
     ).toBeInTheDocument();
   });
 });

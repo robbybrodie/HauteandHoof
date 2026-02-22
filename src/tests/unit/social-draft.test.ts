@@ -5,10 +5,10 @@ describe("formatDraftForPost", () => {
   it("joins caption and hashtags", () => {
     const result = formatDraftForPost({
       caption: "Great ride today!",
-      hashtags: "#HauteAndHoof",
+      hashtags: "#BarnToBlazer",
       platform: "TikTok"
     });
-    expect(result).toBe("Great ride today!\n\n#HauteAndHoof");
+    expect(result).toBe("Great ride today!\n\n#BarnToBlazer");
   });
 
   it("handles empty caption", () => {

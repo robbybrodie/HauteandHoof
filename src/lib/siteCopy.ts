@@ -1,9 +1,8 @@
 export const siteCopy = {
   global: {
-    brand: "Haute & Hoof",
-    brandTag:
-      "Documenting Violet\u2019s journey through fashion & horses \u2014 family, training & a whole lot of heart.",
-    footerTagline: "\u00a9 Haute & Hoof. Made with love by Violet\u2019s family.",
+    brand: "Barn to Blazer",
+    brandTag: "& everything in between.",
+    footerTagline: "\u00a9 Barn to Blazer. Made with love by Violet\u2019s family.",
     affiliateDisclosure:
       "Some links may be affiliate links \u2014 we only recommend products we genuinely use & love.",
     parentManaged: "This site is 100% parent-managed & child-safe.",
@@ -15,7 +14,7 @@ export const siteCopy = {
     heroSubtitle:
       "Follow seven-year-old Violet & her horse Cloudy as they chase ribbons, master new skills & look great doing it.",
     intro:
-      "Haute & Hoof is Violet\u2019s corner of the internet \u2014 a place to share the ups, the downs, the early mornings & the muddy boots that come with loving horses & fashion equally.",
+      "Barn to Blazer is Violet\u2019s corner of the internet \u2014 a place to share the ups, the downs, the early mornings & the muddy boots that come with loving horses & fashion equally.",
     photoSlot: "home-hero.jpg",
     pillars: [
       {
@@ -32,7 +31,7 @@ export const siteCopy = {
       },
       {
         title: "The Family",
-        text: "Training with Dad, sewing with Mum \u2014 Haute & Hoof is powered by family support & terrible dad jokes."
+        text: "Training with Dad, sewing with Mum \u2014 Barn to Blazer is powered by family support & terrible dad jokes."
       }
     ],
     closing:
@@ -167,11 +166,11 @@ export const siteCopy = {
   },
 
   about: {
-    heroTitle: "About Haute & Hoof",
+    heroTitle: "About Barn to Blazer",
     heroSubtitle:
       "A family project celebrating a seven-year-old\u2019s love of horses & fashion. Parent-managed, child-safe & made with love.",
     story:
-      "Haute & Hoof started because Violet\u2019s two biggest passions \u2014 horses & fashion \u2014 deserved a place of their own. This site is run entirely by her parents. Violet helps choose what goes on it, but every decision is parent-approved & child-safe.",
+      "Barn to Blazer started because Violet\u2019s two biggest passions \u2014 horses & fashion \u2014 deserved a place of their own. This site is run entirely by her parents. Violet helps choose what goes on it, but every decision is parent-approved & child-safe.",
     contact:
       "Want to get in touch? Parents & brands can reach us through the form below. We read everything & reply when we can.",
     safety:

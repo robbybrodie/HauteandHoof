@@ -38,7 +38,7 @@ export async function submitContact(formData: FormData) {
 
   const apiKey = process.env.RESEND_API_KEY;
   const to = process.env.CONTACT_TO_EMAIL;
-  const from = process.env.CONTACT_FROM_EMAIL ?? "noreply@hauteandhoof.com";
+  const from = process.env.CONTACT_FROM_EMAIL ?? "noreply@barntoblazer.com";
 
   if (!apiKey || !to) redirect("/about?error=config");
 
@@ -48,7 +48,7 @@ export async function submitContact(formData: FormData) {
     body: JSON.stringify({
       from,
       to,
-      subject: `Haute & Hoof contact from ${name}`,
+      subject: `Barn to Blazer contact from ${name}`,
       text: `Name: ${name}\nEmail: ${email}\n\n${message}`
     })
   });

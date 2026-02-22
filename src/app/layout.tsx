@@ -15,9 +15,9 @@ const body = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Haute & Hoof",
+  title: "Barn to Blazer",
   description:
-    "Documenting Violet\u2019s journey through fashion and horses \u2014 family, training, and a whole lot of heart."
+    "Barn to Blazer \u2014 & everything in between. Documenting Violet\u2019s journey through fashion and horses."
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

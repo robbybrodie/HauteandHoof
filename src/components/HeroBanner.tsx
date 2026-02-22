@@ -41,7 +41,7 @@ export function HeroBanner({
     </>
   ) : (
     <>
-      {showKicker && <p className="heroKicker">Haute &amp; Hoof</p>}
+      {showKicker && <p className="heroKicker">Barn to Blazer</p>}
       <h2 className="heroTitle">{title}</h2>
       {subtitle && <p className="heroSub">{subtitle}</p>}
       {cta && <div className="heroActions">{cta}</div>}

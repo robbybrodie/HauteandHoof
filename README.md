@@ -1,6 +1,6 @@
-# Haute & Hoof
+# Barn to Blazer
 
-Documenting Violet's journey through fashion & horses — family, training & a whole lot of heart.
+& everything in between. Documenting Violet's journey through fashion & horses.
 
 ## Local Development
 
