@@ -1,12 +1,12 @@
 :root {
-  color-scheme: light;
-  --bg: #fcfaf8;
-  --text: #1e1c1d;
-  --muted: #4e4b4d;
-  --card: #ffffff;
-  --line: #e6ddd8;
+  color-scheme: dark;
+  --bg: #0f0d12;
+  --text: #f6f3f7;
+  --muted: #c7bfd0;
+  --card: #1a1620;
+  --line: #31293c;
   --brand: #7f2857;
-  --brand-deep: #5d1940;
+  --brand-deep: #f3d7e8;
   --accent: #d8b38b;
   --banner-height-desktop: 420px;
   --banner-height-mobile: 320px;
@@ -21,7 +21,7 @@ body {
   margin: 0;
   font-family: "Avenir Next", "Segoe UI", Arial, sans-serif;
   color: var(--text);
-  background: radial-gradient(circle at top, #fffefe 0%, var(--bg) 42%);
+  background: radial-gradient(circle at top, #231828 0%, var(--bg) 42%);
   line-height: 1.6;
   overflow-x: clip;
 }
@@ -62,10 +62,11 @@ a {
   text-decoration: none;
   font-weight: 700;
   font-size: 0.95rem;
-  border: 1px solid var(--line);
+  border: 1px solid #463754;
   border-radius: 999px;
   padding: 0.32rem 0.72rem;
-  background: #fff;
+  background: #241f2b;
+  color: var(--text);
 }
 
 .hero {
@@ -86,8 +87,8 @@ a {
   border-radius: 0;
   margin-bottom: 1.2rem;
   overflow: hidden;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  border-top: 1px solid #4a3b57;
+  border-bottom: 1px solid #4a3b57;
   border-left: 0;
   border-right: 0;
   background:
@@ -113,7 +114,7 @@ a {
 }
 
 .heroBannerOverlayFallback {
-  background: linear-gradient(180deg, rgba(9, 6, 7, 0.08) 0%, rgba(9, 6, 7, 0.3) 88%);
+  background: linear-gradient(180deg, rgba(15, 11, 20, 0.12) 0%, rgba(15, 11, 20, 0.42) 88%);
 }
 
 .heroBannerOverlayInner {
@@ -182,9 +183,9 @@ a {
 }
 
 .buttonSecondary {
-  background: #fff;
-  color: var(--brand-deep);
-  border-color: #f8ecf2;
+  background: #2b2433;
+  color: #f8f4fb;
+  border-color: #514162;
 }
 
 .grid {
@@ -235,11 +236,11 @@ a {
 
 .sectionTitle {
   margin: 0.1rem 0 0.6rem;
-  color: var(--brand-deep);
+  color: #f7d7eb;
 }
 
 .callout {
-  background: #fff8f0;
+  background: #201a26;
   border-left: 4px solid var(--accent);
 }
 
@@ -249,7 +250,7 @@ a {
 }
 
 .siteFooter {
-  border-top: 1px solid var(--line);
+  border-top: 1px solid #40334c;
   margin-top: 1.4rem;
   padding: 1rem var(--content-gutter) 0;
 }
@@ -263,7 +264,7 @@ a {
 
 .divider {
   border: 0;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid #40334c;
   margin: 1.1rem 0;
 }
 
@@ -282,10 +283,11 @@ a {
 .textarea {
   width: 100%;
   border-radius: 10px;
-  border: 1px solid #cec3bc;
+  border: 1px solid #52415f;
   padding: 0.7rem 0.8rem;
   font: inherit;
-  background: #fff;
+  background: #1f1a25;
+  color: var(--text);
 }
 
 .textarea {
@@ -300,13 +302,13 @@ a {
 }
 
 .noticeSuccess {
-  background: #edfdf3;
-  border: 1px solid #98e3b5;
+  background: #162b22;
+  border: 1px solid #3d7c5a;
 }
 
 .noticeError {
-  background: #fff1f2;
-  border: 1px solid #f5a7ad;
+  background: #331b23;
+  border: 1px solid #925268;
 }
 
 .hpField {
